@@ -7,13 +7,13 @@
 
 
   <servlet>
-    <servlet-name>MyServlet</servlet-name>
-    <servlet-class>MyServlet</servlet-class>
+    <servlet-name>StartServlet</servlet-name>
+    <servlet-class>StartServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>MyServlet</servlet-name>
+    <servlet-name>StartServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 

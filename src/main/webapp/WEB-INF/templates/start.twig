@@ -13,14 +13,110 @@
 
     <script src={{scriptURL}} > type="text/javascript"</script>
 </head>
-<body onload="addListeners()">
+<body onload="addListeners()" background={{backgroundURL}}>
 
-    <h1>Hello {{person}}!</h1>
 
     <div id="logo">
         <img id="logo-image" src={{logoURL}}></img>
         <p id="title">{{companyName}}</p>
     </div>
+
+    <div>
+        <a href="/cms"> <img id="dwarf" src="{{dwarfURL}}"></a>
+
+    </div>
+
+    <div id="menu">
+        <i id="menu-icon" class="fas fa-bars"></i>
+    </div>
+
+
+
+    <div id="roll-menu">
+        <i id="back-to-main" i class="fas fa-angle-double-up"></i>
+        <div id="navbar">
+            <div id="about-us" class="option">
+                <a><label>{{firstOption}}</label></a>
+            </div>
+
+            <div id="roofs" class="option">
+                <a><label>{{secondOption}}</label></a>
+            </div>
+
+            <div id="hydro" class="option">
+                <a><label>{{thirdOption}}</label></a>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <div id="content">
+        <div id="introduction">
+
+            <h1>{{intro}}</h1>
+
+            <p class="txt">
+
+                {{introDescribe}}
+            </p>
+
+
+
+            <h2>{{firstHeader}}</h2>
+
+            <p class="txt">{{firstDescribe}}</p>
+
+
+
+
+            <h2>{{secondHeader}}</h2>
+
+            <p class="txt">{{secondDescribe}}</p>
+
+
+
+        </div>
+
+        <div id="about-us-describe">
+            <h2 id="about-us-header">{{thirdHeader}}</h2>
+            <p id="about-us-txt"> {{thirdDescribe}}
+
+            </p>
+
+
+
+        </div>
+
+        <div id="roofs-describe">
+            <h2 id="roofs-header">{{fourthHeader}}</h2>
+            <p id="roofs-txt">
+              {{fourthDescribe}}
+            </p>
+        </div>
+
+        <div id="hydro-describe">
+            <h2 id="hydro-header">{{fifthHeader}}</h2>
+            <p id="hydro-txt">
+
+                {{fifthDescribe}}
+
+            </p>
+        </div>
+
+    </div>
+
+        <footer>
+            <div class="foot">
+                {{footDescribe}}
+            </div>
+            <div id="me">
+                <p>Copyright by Krzysztof Przybylowicz </p><i class="far fa-copyright"></i>
+            </div>
+        </footer>
+
 
 </body>
 </html>
