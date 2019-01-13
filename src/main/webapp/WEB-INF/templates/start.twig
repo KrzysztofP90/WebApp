@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}!</title>
+    <link rel="stylesheet" href={{css}} type='text/css'>
+
+    <meta name="author" content="Krzysztof" />
+    <meta name="robots" content="index,follow"/>
+    <meta name="keywords" content="mysite"/>
+    <meta name="description" content="website"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+    <script src={{scriptURL}} > type="text/javascript"</script>
 </head>
-<body>
-    Hello {{person}}!
+<body onload="addListeners()">
+
+    <h1>Hello {{person}}!</h1>
+
+    <div id="logo">
+        <img id="logo-image" src={{logoURL}}></img>
+        <p id="title">{{companyName}}</p>
+    </div>
+
 </body>
 </html>
