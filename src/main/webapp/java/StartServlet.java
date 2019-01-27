@@ -20,7 +20,7 @@ public class StartServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-//        response.getWriter().write("<html><body><h1>It's working!!!</h1></body></html>");
+
 
         String title = "MyPage";
         String name = "Twigi";
@@ -84,18 +84,6 @@ public class StartServlet extends HttpServlet {
                 with("fifthDescribe",optionsHeaderDescribe[9]).
                 with("footDescribe", footDescribe).
                 render(request,response);
-
-
-
-
-        /// send css by servlet ???
-
-
-//        RequestDispatcher dispatcher = request.getRequestDispatcher(
-//                "/WEB-INF/stylesheet/styles.css");
-//
-//        dispatcher.include(request, response);
-
 
     }
 }
