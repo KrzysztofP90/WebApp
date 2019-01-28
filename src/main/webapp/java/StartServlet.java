@@ -1,25 +1,29 @@
 
-
+import DAO.MenuOptionDAO;
+import DAO.MenuOptionDAOhibernate;
+import DAO.TextContentDAO;
+import DAO.TextContentDAOhibernate;
 import org.jtwig.web.servlet.JtwigRenderer;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-//@WebServlet(name = "StartServlet",  urlPatterns = {"/hello" })
+
 public class StartServlet extends HttpServlet {
 
+
+    private TextContentDAO textContentDAO = new TextContentDAOhibernate();
+    private MenuOptionDAO menuOptionDAO = new MenuOptionDAOhibernate();
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
+
+
 
     protected void doGet( HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
-
 
 
         String title = "MyPage";
@@ -37,25 +41,14 @@ public class StartServlet extends HttpServlet {
 
         String companyName = "Client's company";
 
-        String[] options = {"1 option","2 option", "3 option", "4 option", "5 option"};
+        String[] options = getOptionsArray();
 
-        String[] introduction = {"introHeader", "Introduction to web site!"};
+        String[] introduction = getIntroductionArray();
 
-        String[] optionsHeaderDescribe = {"Header1", "This is our first special service for You our Dear Customer! You will" +
-                "be satisfied. We are sure about our professionalist !",
-                "Header2", "This is our second special service for You our Dear Customer! You will" +
-                "be satisfied. We are sure about our professionalist !",
-                "Header3", "This is our third special service for You our Dear Customer! You will" +
-                "be satisfied. We are sure about our professionalist !",
-                "Header4", "This is our fourth special service for You our Dear Customer! You will" +
-                "be satisfied. We are sure about our professionalist !",
-                "Header5", "This is our fifth special service for You our Dear Customer! You will" +
-                "be satisfied. We are sure about our professionalist !"
-        };
+        String[] optionsHeaderDescribe = getOptionsHeaderDescribeArray();
 
-        String footDescribe = "We invite to cooperate!";
+        String footerDescribe = getFooterDescribe();
 
-//        request.setAttribute("My Page", "Twigi");
         renderer.dispatcherFor("/WEB-INF/templates/start.twig").
                 with("title", title).
                 with("css", cssURL).
@@ -68,8 +61,6 @@ public class StartServlet extends HttpServlet {
                 with("firstOption",options[0]).
                 with("secondOption",options[1]).
                 with("thirdOption",options[2]).
-                with("fourthOption",options[3]).
-                with("fifthOption",options[4]).
                 with("intro", introduction[0]).
                 with("introDescribe", introduction[1]).
                 with("firstHeader",optionsHeaderDescribe[0]).
@@ -82,8 +73,36 @@ public class StartServlet extends HttpServlet {
                 with("fourthDescribe",optionsHeaderDescribe[7]).
                 with("fifthHeader",optionsHeaderDescribe[8]).
                 with("fifthDescribe",optionsHeaderDescribe[9]).
-                with("footDescribe", footDescribe).
+                with("footDescribe", footerDescribe).
                 render(request,response);
 
     }
+
+    private String[] getOptionsArray() {
+        String[] arr = {menuOptionDAO.getTitleOfMenuOptionById(1), menuOptionDAO.getTitleOfMenuOptionById(2),
+                menuOptionDAO.getTitleOfMenuOptionById(3)};
+        return arr;
+    }
+
+    private String[] getIntroductionArray() {
+        String[] arr =  {textContentDAO.getTextContentHeaderByID(1), textContentDAO.getTextContentDescribeByID(1)};
+        return arr;
+    }
+
+    private String[] getOptionsHeaderDescribeArray() {
+        String[] arr = {
+                textContentDAO.getTextContentHeaderByID(2), textContentDAO.getTextContentDescribeByID(2),
+                textContentDAO.getTextContentHeaderByID(3), textContentDAO.getTextContentDescribeByID(3),
+                textContentDAO.getTextContentHeaderByID(4), textContentDAO.getTextContentDescribeByID(4),
+                textContentDAO.getTextContentHeaderByID(5), textContentDAO.getTextContentDescribeByID(5),
+                textContentDAO.getTextContentHeaderByID(6), textContentDAO.getTextContentDescribeByID(6),
+        };
+        return arr;
+    }
+
+    private String getFooterDescribe() {
+        return menuOptionDAO.getTitleOfMenuOptionById(4);
+    }
+
+
 }
