@@ -1,18 +1,24 @@
 package helpers;
 
+import DAO.ActiveSessionDAO;
+import DAO.ActiveSessionDAOhibernate;
+
 import javax.servlet.http.Cookie;
 
-public class CookieVerificator {
+public class CookieVerifycator {
 
+    private ActiveSessionDAO activeSessionDAO = new ActiveSessionDAOhibernate();
 
     public boolean verifyCookie(Cookie[] cookieArray) {
 
         boolean verifyOk = false;
 
+        String activeSessionToken = activeSessionDAO.getSessionTokenFromDataBase();
+
         if (cookieArray != null) {
 
             for (Cookie cookie : cookieArray) {
-                if (cookie.getValue().equals("59348593859345353")) {
+                if (cookie.getValue().equals(activeSessionToken)) {
                     verifyOk = true;
                 }
             }

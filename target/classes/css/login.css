@@ -25,4 +25,8 @@ button:hover {
     color:grey;
 }
 
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
 

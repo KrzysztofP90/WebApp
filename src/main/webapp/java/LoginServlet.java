@@ -1,6 +1,9 @@
+import DAO.ActiveSessionDAO;
+import DAO.ActiveSessionDAOhibernate;
 import DAO.ClientDAO;
 import DAO.ClientDAOhibernate;
-import helpers.CookieVerificator;
+import helpers.CookieVerifycator;
+import helpers.SessionTokenGenerator;
 import org.jtwig.web.servlet.JtwigRenderer;
 
 import javax.servlet.ServletException;
@@ -9,14 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
 
 public class LoginServlet extends HttpServlet {
 
 
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private ClientDAO clientDAO = new ClientDAOhibernate();
-    private CookieVerificator cookieVerificator = new CookieVerificator();
+    private CookieVerifycator cookieVerificator = new CookieVerifycator();
+    private SessionTokenGenerator generator = new SessionTokenGenerator();
+    private ActiveSessionDAO activeSessionDAO = new ActiveSessionDAOhibernate();
 
 
 
@@ -59,10 +63,15 @@ public class LoginServlet extends HttpServlet {
 
         if (loginFromUser.equals(correctLogin) && passwordFromUser.equals(correctPassword)) {
 
-            Cookie accessToken = new Cookie("SessionId", "59348593859345353");
+            String token = generator.generateSessionToken();
+            activeSessionDAO.addSessionTokenToDataBase(token);
+            Cookie accessToken = new Cookie("SessionId", token);
             response.addCookie(accessToken);
-
+            response.sendRedirect("/cms");
         }
-        response.sendRedirect("/cms");
+        else {
+            response.sendRedirect("/login");
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-import helpers.CookieVerificator;
+import helpers.CookieVerifycator;
 import org.jtwig.web.servlet.JtwigRenderer;
 
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class CmsServlet extends HttpServlet {
 
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
-    private CookieVerificator cookieVerificator = new CookieVerificator();
+    private CookieVerifycator cookieVerificator = new CookieVerifycator();
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,9 +30,6 @@ public class CmsServlet extends HttpServlet {
 
             renderer.dispatcherFor("/WEB-INF/templates/cms.twig").
                     render(request, response);
-        }
-        else {
-            renderer.dispatcherFor("/WEB-INF/templates/denyAccess.twig").render(request,response);
         }
     }
 }

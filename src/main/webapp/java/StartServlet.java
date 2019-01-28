@@ -1,7 +1,4 @@
-import DAO.MenuOptionDAO;
-import DAO.MenuOptionDAOhibernate;
-import DAO.TextContentDAO;
-import DAO.TextContentDAOhibernate;
+import DAO.*;
 import org.jtwig.web.servlet.JtwigRenderer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +14,7 @@ public class StartServlet extends HttpServlet {
     private TextContentDAO textContentDAO = new TextContentDAOhibernate();
     private MenuOptionDAO menuOptionDAO = new MenuOptionDAOhibernate();
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
+    private ActiveSessionDAO sessionDAO = new ActiveSessionDAOhibernate();
 
 
 
@@ -103,5 +101,12 @@ public class StartServlet extends HttpServlet {
         return menuOptionDAO.getTitleOfMenuOptionById(4);
     }
 
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        sessionDAO.clearActiveSessionInDataBase();
+        response.sendRedirect("/hello");
+    }
 
 }
