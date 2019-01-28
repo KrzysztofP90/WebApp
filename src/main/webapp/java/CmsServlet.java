@@ -1,4 +1,5 @@
 import helpers.CookieVerifycator;
+import helpers.TextDataPreparator;
 import org.jtwig.web.servlet.JtwigRenderer;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ public class CmsServlet extends HttpServlet {
 
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private CookieVerifycator cookieVerificator = new CookieVerifycator();
+    private TextDataPreparator preparator = new TextDataPreparator();
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -22,13 +24,20 @@ public class CmsServlet extends HttpServlet {
 
 
         if (cookieVerificator.verifyCookie(cookieArray)) {
-            String cssURL = request.getContextPath() + "resources/css/login.css";
+            String cssURL = request.getContextPath() + "resources/css/cms.css";
 
-            String jsURL = request.getContextPath() + "resources/main.js";
 
             String backgroundURL = request.getContextPath() + "resources/background.jpeg";
 
-            renderer.dispatcherFor("/WEB-INF/templates/cms.twig").
+            String[] introductionArray = preparator.getIntroductionArray();
+
+            System.out.println(introductionArray[0]  + "!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println(introductionArray[1] + "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            renderer.dispatcherFor("/WEB-INF/templates/cms.twig")
+                    .with("css",cssURL)
+                    .with("backgroundURL", backgroundURL)
+                    .with("headerIntro",introductionArray[0])
+                    .with("describeIntro", introductionArray[1]).
                     render(request, response);
         }
     }

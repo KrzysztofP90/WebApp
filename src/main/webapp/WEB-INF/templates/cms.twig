@@ -8,7 +8,6 @@
     <meta name="robots" content="index,follow"/>
     <meta name="keywords" content="mysite"/>
     <meta name="description" content="website"/>
-    <script src={{scriptURL}} > type="text/javascript"</script>
 </head>
 <body background={{backgroundURL}}>
 
@@ -16,7 +15,11 @@
     <input type="submit" value="Log Out">
 </form>
     <form method="post" action="/edited">
-        <h1>Logged!!!</h1>
+        <h1>Welcome in CMS!</h1>
+        <h2>Edit intro to web site header:</h2><br>
+        <textarea maxlength="250">{{headerIntro}}</textarea>
+        <h2>Edit intro to web site describe:</h2><br>
+        <textarea maxlength="1000">{{describeIntro}}</textarea><br>
         <button type="submit">Save</button>
     </form>
 </body>

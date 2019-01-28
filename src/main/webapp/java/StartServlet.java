@@ -1,4 +1,5 @@
 import DAO.*;
+import helpers.TextDataPreparator;
 import org.jtwig.web.servlet.JtwigRenderer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +11,10 @@ import java.io.IOException;
 
 public class StartServlet extends HttpServlet {
 
-
-    private TextContentDAO textContentDAO = new TextContentDAOhibernate();
-    private MenuOptionDAO menuOptionDAO = new MenuOptionDAOhibernate();
+    
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private ActiveSessionDAO sessionDAO = new ActiveSessionDAOhibernate();
+    private TextDataPreparator preparator = new TextDataPreparator();
 
 
 
@@ -38,13 +38,13 @@ public class StartServlet extends HttpServlet {
 
         String companyName = "Client's company";
 
-        String[] options = getOptionsArray();
+        String[] options = preparator.getOptionsArray();
 
-        String[] introduction = getIntroductionArray();
+        String[] introduction = preparator.getIntroductionArray();
 
-        String[] optionsHeaderDescribe = getOptionsHeaderDescribeArray();
+        String[] optionsHeaderDescribe = preparator.getOptionsHeaderDescribeArray();
 
-        String footerDescribe = getFooterDescribe();
+        String footerDescribe = preparator.getFooterDescribe();
 
         renderer.dispatcherFor("/WEB-INF/templates/start.twig").
                 with("title", title).
@@ -73,32 +73,6 @@ public class StartServlet extends HttpServlet {
                 with("footDescribe", footerDescribe).
                 render(request,response);
 
-    }
-
-    private String[] getOptionsArray() {
-        String[] arr = {menuOptionDAO.getTitleOfMenuOptionById(1), menuOptionDAO.getTitleOfMenuOptionById(2),
-                menuOptionDAO.getTitleOfMenuOptionById(3)};
-        return arr;
-    }
-
-    private String[] getIntroductionArray() {
-        String[] arr =  {textContentDAO.getTextContentHeaderByID(1), textContentDAO.getTextContentDescribeByID(1)};
-        return arr;
-    }
-
-    private String[] getOptionsHeaderDescribeArray() {
-        String[] arr = {
-                textContentDAO.getTextContentHeaderByID(2), textContentDAO.getTextContentDescribeByID(2),
-                textContentDAO.getTextContentHeaderByID(3), textContentDAO.getTextContentDescribeByID(3),
-                textContentDAO.getTextContentHeaderByID(4), textContentDAO.getTextContentDescribeByID(4),
-                textContentDAO.getTextContentHeaderByID(5), textContentDAO.getTextContentDescribeByID(5),
-                textContentDAO.getTextContentHeaderByID(6), textContentDAO.getTextContentDescribeByID(6),
-        };
-        return arr;
-    }
-
-    private String getFooterDescribe() {
-        return menuOptionDAO.getTitleOfMenuOptionById(4);
     }
 
 

@@ -1,10 +1,7 @@
 package model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class TextContent {
@@ -15,6 +12,8 @@ public class TextContent {
     private long id;
 
     private String header;
+
+    @Column(columnDefinition="TEXT")
     private String describe;
 
     public TextContent() {
