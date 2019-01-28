@@ -1,4 +1,3 @@
-
 import DAO.MenuOptionDAO;
 import DAO.MenuOptionDAOhibernate;
 import DAO.TextContentDAO;
@@ -29,7 +28,7 @@ public class StartServlet extends HttpServlet {
         String title = "MyPage";
         String name = "Twigi";
 
-        String cssURL = request.getContextPath() + "resources/styles.css";
+        String cssURL = request.getContextPath() + "resources/css/styles.css";
 
         String jsURL = request.getContextPath() + "resources/main.js";
 

@@ -17,8 +17,35 @@
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+    <servlet-name>CmsServlet</servlet-name>
+    <servlet-class>CmsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CmsServlet</servlet-name>
+    <url-pattern>/cms</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditDataBaseServlet</servlet-name>
+    <servlet-class>EditDataBaseServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditDataBaseServlet</servlet-name>
+    <url-pattern>/edited</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

@@ -1,0 +1,28 @@
+h1 {
+    color:white
+}
+
+p {
+    color:white
+}
+
+form#login-div {
+   margin-left: 45%;
+   margin-top: 10%;
+}
+
+div#buttons {
+    display:flex;
+    flex-direction:row;
+}
+
+button {
+    margin-left: 1%;
+}
+
+button:hover {
+    cursor:pointer;
+    color:grey;
+}
+
+

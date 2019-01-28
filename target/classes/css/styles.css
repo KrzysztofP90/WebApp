@@ -232,9 +232,16 @@ footer {
 div#me {
     display: flex;
     justify-content: center;
+
+
+}
+
+p.me {
+    color: white;
 }
 
 .far.fa-copyright {
     font-size: 15px;
     margin-top: 0.5%;
+    color: white;
 }
