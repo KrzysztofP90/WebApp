@@ -44,4 +44,32 @@ public class TextContentDAOhibernate implements TextContentDAO {
 
         return headerList.get(0);
     }
+
+
+    public void updateTextContentHeaderById(int id, String value) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query query = menager.createQuery("UPDATE TextContent SET header=" + value + " WHERE id=" + id);
+        query.executeUpdate();
+
+        menager.close();
+        factory.close();
+    }
+
+
+    public void updateTextContentDescribeById(int id, String value) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query query = menager.createQuery("UPDATE TextContent SET describe=" + value + " WHERE id=" + id);
+        query.executeUpdate();
+
+        menager.close();
+        factory.close();
+    }
 }

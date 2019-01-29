@@ -24,4 +24,18 @@ public class MenuOptionDAOhibernate implements MenuOptionDAO {
 
         return headerList.get(0);
     }
+
+
+    public void updateMenuOptionTitleById(int id, String value) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query query = menager.createQuery("UPDATE MenuOption SET title=" + value + " WHERE id=" + id);
+        query.executeUpdate();
+
+        menager.close();
+        factory.close();
+    }
 }

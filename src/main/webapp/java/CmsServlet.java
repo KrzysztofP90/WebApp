@@ -31,14 +31,27 @@ public class CmsServlet extends HttpServlet {
 
             String[] introductionArray = preparator.getIntroductionArray();
 
-            System.out.println(introductionArray[0]  + "!!!!!!!!!!!!!!!!!!!!!!!");
-            System.out.println(introductionArray[1] + "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            String[] optionsHeaderDescribe = preparator.getOptionsHeaderDescribeArray();
+
+            String[] options = preparator.getOptionsArray();
+
+            String footerDescribe = preparator.getFooterDescribe();
+
             renderer.dispatcherFor("/WEB-INF/templates/cms.twig")
                     .with("css",cssURL)
                     .with("backgroundURL", backgroundURL)
                     .with("headerIntro",introductionArray[0])
-                    .with("describeIntro", introductionArray[1]).
-                    render(request, response);
+                    .with("describeIntro", introductionArray[1])
+                    .with("headerWelcome",optionsHeaderDescribe[0]).with("describeWelcome",optionsHeaderDescribe[1])
+                    .with("headerAdditional",optionsHeaderDescribe[2]).with("describeAdditional", optionsHeaderDescribe[3])
+                    .with("titleOption1", options[0])
+                    .with("headerOption1",optionsHeaderDescribe[4]).with("describeOption1",optionsHeaderDescribe[5])
+                    .with("titleOption2", options[1])
+                    .with("headerOption2",optionsHeaderDescribe[6]).with("describeOption2",optionsHeaderDescribe[7])
+                    .with("titleOption3", options[2])
+                    .with("headerOption3",optionsHeaderDescribe[8]).with("describeOption3",optionsHeaderDescribe[9])
+                    .with("titleFooter", footerDescribe)
+                    .render(request, response);
         }
     }
 }

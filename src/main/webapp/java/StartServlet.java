@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class StartServlet extends HttpServlet {
 
-    
+
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private ActiveSessionDAO sessionDAO = new ActiveSessionDAOhibernate();
     private TextDataPreparator preparator = new TextDataPreparator();

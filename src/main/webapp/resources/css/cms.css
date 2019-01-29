@@ -2,7 +2,17 @@ h1,h2 {
     color:white;
 }
 
-textarea {
+textarea.describe {
     width: 80%;
     height: 200px;
+}
+
+textarea.header {
+    width: 80%;
+    height: 50px;
+}
+
+textarea.title {
+    width: 80%;
+    height: 20px;
 }
