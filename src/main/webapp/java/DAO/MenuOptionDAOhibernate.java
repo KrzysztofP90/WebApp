@@ -1,5 +1,7 @@
 package DAO;
 
+import org.hibernate.Session;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -26,16 +28,22 @@ public class MenuOptionDAOhibernate implements MenuOptionDAO {
     }
 
 
-    public void updateMenuOptionTitleById(int id, String value) {
+    public void updateMenuOptionTitleById(long id, String value) {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
         EntityManager menager = factory.createEntityManager();
         menager.getTransaction().begin();
-
-        Query query = menager.createQuery("UPDATE MenuOption SET title=" + value + " WHERE id=" + id);
+//
+////        Query query = menager.createQuery("UPDATE MenuOption SET title=:title WHERE id=:id");
+////        query.setParameter("title",value);
+////        query.setParameter("id", id);
+        Query query = menager.createQuery("UPDATE MenuOption a SET a.title='"+value+"' WHERE a.id="+ id);
         query.executeUpdate();
 
+        menager.getTransaction().commit();
         menager.close();
         factory.close();
+
+
     }
 }

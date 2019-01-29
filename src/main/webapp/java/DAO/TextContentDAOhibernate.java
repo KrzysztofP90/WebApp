@@ -46,29 +46,37 @@ public class TextContentDAOhibernate implements TextContentDAO {
     }
 
 
-    public void updateTextContentHeaderById(int id, String value) {
+    public void updateTextContentHeaderById(long id, String value) {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
         EntityManager menager = factory.createEntityManager();
         menager.getTransaction().begin();
 
-        Query query = menager.createQuery("UPDATE TextContent SET header=" + value + " WHERE id=" + id);
+//        Query query = menager.createQuery("UPDATE TextContent SET header=:header WHERE id=:id");
+//        query.setParameter("header",value);
+//        query.setParameter("id",id);
+        Query query = menager.createQuery("UPDATE TextContent a SET a.header='"+value+"' WHERE a.id=" + id);
         query.executeUpdate();
 
+        menager.getTransaction().commit();
         menager.close();
         factory.close();
     }
 
 
-    public void updateTextContentDescribeById(int id, String value) {
+    public void updateTextContentDescribeById(long id, String value) {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
         EntityManager menager = factory.createEntityManager();
         menager.getTransaction().begin();
 
-        Query query = menager.createQuery("UPDATE TextContent SET describe=" + value + " WHERE id=" + id);
+//        Query query = menager.createQuery("UPDATE TextContent SET describe=:describe WHERE id=:id");
+//        query.setParameter("describe",value);
+//        query.setParameter("id",value);
+        Query query = menager.createQuery("UPDATE TextContent a SET a.describe='"+value+"' WHERE a.id=" + id);
         query.executeUpdate();
 
+        menager.getTransaction().commit();
         menager.close();
         factory.close();
     }

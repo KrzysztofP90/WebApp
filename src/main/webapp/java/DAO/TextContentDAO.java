@@ -6,7 +6,7 @@ public interface TextContentDAO {
 
     String getTextContentDescribeByID(int id);
 
-    void updateTextContentHeaderById(int id, String value);
+    void updateTextContentHeaderById(long id, String value);
 
-    void updateTextContentDescribeById(int id, String value);
+    void updateTextContentDescribeById(long id, String value);
 }
