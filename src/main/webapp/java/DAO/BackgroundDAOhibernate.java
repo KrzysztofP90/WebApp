@@ -1,6 +1,7 @@
 package DAO;
 
 import model.Background;
+import org.hibernate.cfg.QuerySecondPass;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,6 +46,9 @@ public class BackgroundDAOhibernate implements BackgroundDAO {
                 name = background.getName();
             }
         }
+        menager.getTransaction().commit();
+        menager.close();
+        factory.close();
         return name;
     }
 
@@ -58,12 +62,47 @@ public class BackgroundDAOhibernate implements BackgroundDAO {
         Query query= menager.createQuery(
                 "SELECT a FROM Background a WHERE a.active=true", Background.class);
         List<Background> backgroundsList = query.getResultList();
-        
+
+        menager.getTransaction().commit();
+        menager.close();
+        factory.close();
         return  backgroundsList.get(0).getName();
     }
 
 
+    public void setActiveackgroundByAllias(String allias) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query queryToRemoveOldActiveBackground = menager.createQuery(
+                "UPDATE Background a SET a.active=:t where a.allias=:al");
+        queryToRemoveOldActiveBackground.setParameter("t", true);
+        queryToRemoveOldActiveBackground.setParameter("al", allias);
+        queryToRemoveOldActiveBackground.executeUpdate();
+
+        menager.getTransaction().commit();
+        menager.close();
+        factory.close();
+    }
 
 
+    public void setUnactiveBackgroundByAllias(String allias) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query queryToRemoveOldActiveBackground = menager.createQuery(
+                "UPDATE Background a SET a.active=:f where a.allias=:al");
+        queryToRemoveOldActiveBackground.setParameter("f", false);
+        queryToRemoveOldActiveBackground.setParameter("al", allias);
+        queryToRemoveOldActiveBackground.executeUpdate();
+
+        menager.getTransaction().commit();
+        menager.close();
+        factory.close();
+    }
 
 }

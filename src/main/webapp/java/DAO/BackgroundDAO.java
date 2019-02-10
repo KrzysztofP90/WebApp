@@ -9,4 +9,8 @@ public interface BackgroundDAO {
     String getNameByAllias(String allias);
 
     String getNameOfActiveBackground();
+
+    void setUnactiveBackgroundByAllias(String allias);
+
+    void setActiveackgroundByAllias(String allias);
 }

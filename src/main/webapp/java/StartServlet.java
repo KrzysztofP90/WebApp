@@ -23,9 +23,7 @@ public class StartServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-
-        backgroundDAO.getNameOfActiveBackground();
-
+        
         String title = "MyPage";
         String name = "Twigi";
 
