@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.List;
 
 
 public class StartServlet extends HttpServlet {
@@ -15,6 +15,7 @@ public class StartServlet extends HttpServlet {
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private ActiveSessionDAO sessionDAO = new ActiveSessionDAOhibernate();
     private TextDataPreparator preparator = new TextDataPreparator();
+    private BackgroundDAO backgroundDAO = new BackgroundDAOhibernate();
 
 
 
@@ -22,6 +23,8 @@ public class StartServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
+
+        backgroundDAO.getNameOfActiveBackground();
 
         String title = "MyPage";
         String name = "Twigi";

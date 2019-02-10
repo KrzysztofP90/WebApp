@@ -1,15 +1,12 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Background {
 
     @Id
-    @Column(nullable = false, unique = true)
     private String allias;
 
     private String name;
