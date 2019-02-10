@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BackgroundDAO {
 
-    List<String> getAlliassesFromDataBase();
+    String[] getAlliassesFromDataBase();
 
     String getNameByAllias(String allias);
 
@@ -12,5 +12,7 @@ public interface BackgroundDAO {
 
     void setUnactiveBackgroundByAllias(String allias);
 
-    void setActiveackgroundByAllias(String allias);
+    void setActiveBackgroundByAllias(String allias);
+
+    String getAlliasOfActiveBackground();
 }

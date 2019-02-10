@@ -12,7 +12,7 @@ import java.util.List;
 public class BackgroundDAOhibernate implements BackgroundDAO {
 
 
-    public List<String> getAlliassesFromDataBase() {
+    public String[] getAlliassesFromDataBase() {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
         EntityManager menager = factory.createEntityManager();
@@ -21,11 +21,16 @@ public class BackgroundDAOhibernate implements BackgroundDAO {
         Query query = menager.createQuery("SELECT allias FROM Background");
         List<String> alliasList = query.getResultList();
 
+        String[] arrayOfAlliases = new String[alliasList.size()];
+
+        for (int i = 0; i < alliasList.size(); i++) {
+            arrayOfAlliases[i] = alliasList.get(i);
+        }
         menager.getTransaction().commit();
         menager.close();
         factory.close();
 
-        return alliasList;
+        return arrayOfAlliases;
     }
 
 
@@ -70,7 +75,24 @@ public class BackgroundDAOhibernate implements BackgroundDAO {
     }
 
 
-    public void setActiveackgroundByAllias(String allias) {
+    public String getAlliasOfActiveBackground() {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
+        EntityManager menager = factory.createEntityManager();
+        menager.getTransaction().begin();
+
+        Query query= menager.createQuery(
+                "SELECT a FROM Background a WHERE a.active=true", Background.class);
+        List<Background> backgroundsList = query.getResultList();
+
+        menager.getTransaction().commit();
+        menager.close();
+        factory.close();
+        return  backgroundsList.get(0).getAllias();
+    }
+
+
+    public void setActiveBackgroundByAllias(String allias) {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CMS");
         EntityManager menager = factory.createEntityManager();

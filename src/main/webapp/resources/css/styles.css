@@ -221,14 +221,14 @@ footer {
 
 
 }
-
+/*
 .foot:hover{
     cursor: pointer;
     background-color: aliceblue;
     color: black;
     OPACITY:0.6;
 }
-
+*/
 div#me {
     display: flex;
     justify-content: center;

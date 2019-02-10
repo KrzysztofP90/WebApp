@@ -15,7 +15,14 @@
     <input type="submit" value="Log Out">
 </form>
     <form method="post" action="/edited">
-        <h1>Welcome in CMS!</h1>
+        <h1>Welcome in CMS!</h1><br>
+        <h2>Active background: {{activeBackground}}</h2>
+        <h2>Select background layout:</h2>
+        <select name="layout">
+            {% for allias in arrayOfBackgroundAlliases %}
+            <option value={{allias}}>{{allias}}</option>
+            {% endfor %}
+        </select><br>
         <h2>Edit intro to web site header:</h2><br>
         <textarea class="header" maxlength="250" name="headerIntro">{{headerIntro}}</textarea>
         <h2>Edit intro to web site describe:</h2><br>

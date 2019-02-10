@@ -1,7 +1,4 @@
-import DAO.ActiveSessionDAO;
-import DAO.ActiveSessionDAOhibernate;
-import DAO.ClientDAO;
-import DAO.ClientDAOhibernate;
+import DAO.*;
 import helpers.CookieVerifycator;
 import helpers.SessionTokenGenerator;
 import org.jtwig.web.servlet.JtwigRenderer;
@@ -21,6 +18,7 @@ public class LoginServlet extends HttpServlet {
     private CookieVerifycator cookieVerificator = new CookieVerifycator();
     private SessionTokenGenerator generator = new SessionTokenGenerator();
     private ActiveSessionDAO activeSessionDAO = new ActiveSessionDAOhibernate();
+    private BackgroundDAO backgroundDAO = new BackgroundDAOhibernate();
 
 
 
@@ -38,7 +36,9 @@ public class LoginServlet extends HttpServlet {
 
             String jsURL = request.getContextPath() + "resources/main.js";
 
-            String backgroundURL = request.getContextPath() + "resources/background.jpeg";
+            String nameOfActiveBackground = backgroundDAO.getNameOfActiveBackground();
+
+            String backgroundURL = request.getContextPath() + "resources/backgrounds/" + nameOfActiveBackground;
 
 
             renderer.dispatcherFor("/WEB-INF/templates/login.twig")

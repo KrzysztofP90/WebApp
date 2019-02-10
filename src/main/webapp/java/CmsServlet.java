@@ -1,3 +1,5 @@
+import DAO.BackgroundDAO;
+import DAO.BackgroundDAOhibernate;
 import helpers.CookieVerifycator;
 import helpers.TextDataPreparator;
 import org.jtwig.web.servlet.JtwigRenderer;
@@ -15,6 +17,7 @@ public class CmsServlet extends HttpServlet {
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private CookieVerifycator cookieVerificator = new CookieVerifycator();
     private TextDataPreparator preparator = new TextDataPreparator();
+    private BackgroundDAO backgroundDAO = new BackgroundDAOhibernate();
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,7 +30,9 @@ public class CmsServlet extends HttpServlet {
             String cssURL = request.getContextPath() + "resources/css/cms.css";
 
 
-            String backgroundURL = request.getContextPath() + "resources/background.jpeg";
+            String nameOfActiveBackground = backgroundDAO.getNameOfActiveBackground();
+
+            String backgroundURL = request.getContextPath() + "resources/backgrounds/default.jpeg";
 
             String[] introductionArray = preparator.getIntroductionArray();
 
@@ -37,8 +42,16 @@ public class CmsServlet extends HttpServlet {
 
             String footerDescribe = preparator.getFooterDescribe();
 
+            String[] arrayOfBackgroundAlliases = backgroundDAO.getAlliassesFromDataBase();
+
+            String activeBackgrundAllias = backgroundDAO.getAlliasOfActiveBackground();
+
+
+
             renderer.dispatcherFor("/WEB-INF/templates/cms.twig")
                     .with("css",cssURL)
+                    .with("arrayOfBackgroundAlliases", arrayOfBackgroundAlliases)
+                    .with("activeBackground", activeBackgrundAllias)
                     .with("backgroundURL", backgroundURL)
                     .with("headerIntro",introductionArray[0])
                     .with("describeIntro", introductionArray[1])

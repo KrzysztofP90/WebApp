@@ -1,7 +1,4 @@
-import DAO.MenuOptionDAO;
-import DAO.MenuOptionDAOhibernate;
-import DAO.TextContentDAO;
-import DAO.TextContentDAOhibernate;
+import DAO.*;
 import org.jtwig.web.servlet.JtwigRenderer;
 
 import javax.servlet.ServletException;
@@ -17,6 +14,7 @@ public class EditDataBaseServlet extends HttpServlet {
     private final JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private MenuOptionDAO menuOptionDAO = new MenuOptionDAOhibernate();
     private TextContentDAO textContentDAO = new TextContentDAOhibernate();
+    private BackgroundDAO backgroundDAO= new BackgroundDAOhibernate();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +26,15 @@ public class EditDataBaseServlet extends HttpServlet {
 
         updateMenuOptionsInDataBase(request);
 
+        setActiveBackground(request);
+
+        String cssURL = request.getContextPath() + "resources/css/login.css";
+
+        String backgroundURL = request.getContextPath() + "resources/backgrounds/default.jpeg";
+
         renderer.dispatcherFor("/WEB-INF/templates/edited.twig")
+                .with("backgroundURL",backgroundURL)
+                .with("css", cssURL)
                 .render(request, response);
     }
 
@@ -81,6 +87,14 @@ public class EditDataBaseServlet extends HttpServlet {
         menuOptionDAO.updateMenuOptionTitleById(3,titleOption3);
         String titleFooter = request.getParameter("titleFooter");
         menuOptionDAO.updateMenuOptionTitleById(4,titleFooter);
+    }
+
+    private void setActiveBackground(HttpServletRequest request) {
+
+        String newActiveBackgroundAllias = request.getParameter("layout");
+        System.out.println(newActiveBackgroundAllias + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        backgroundDAO.setUnactiveBackgroundByAllias(backgroundDAO.getAlliasOfActiveBackground());
+        backgroundDAO.setActiveBackgroundByAllias(newActiveBackgroundAllias);
     }
 
 }

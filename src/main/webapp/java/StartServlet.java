@@ -23,7 +23,7 @@ public class StartServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+
         String title = "MyPage";
         String name = "Twigi";
 
@@ -31,7 +31,9 @@ public class StartServlet extends HttpServlet {
 
         String jsURL = request.getContextPath() + "resources/main.js";
 
-        String backgroundURL = request.getContextPath() + "resources/background.jpeg";
+        String nameOfActiveBackground = backgroundDAO.getNameOfActiveBackground();
+
+        String backgroundURL = request.getContextPath() + "resources/backgrounds/" + nameOfActiveBackground;
 
         String logoURL = request.getContextPath() + "resources/logo.jpg";
 
