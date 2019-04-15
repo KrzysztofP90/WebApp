@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMS</title>
+    <link rel="stylesheet" href={{css}} type='text/css'>
+    <meta name="author" content="Krzysztof" />
+    <meta name="robots" content="index,follow"/>
+    <meta name="keywords" content="mysite"/>
+    <meta name="description" content="website"/>
+</head>
+<body background={{backgroundURL}}>
+
+<form method="post" action="/hello">
+    <input type="submit" value="Log Out">
+</form>
+    <form method="post" action="/edited">
+        <h1>Welcome in CMS!</h1><br>
+        <h2>Active background: {{activeBackground}}</h2>
+        <h2>Select background layout:</h2>
+        <select name="layout">
+            {% for allias in arrayOfBackgroundAlliases %}
+            <option value={{allias}}>{{allias}}</option>
+            {% endfor %}
+        </select><br>
+        <h2>Edit intro to web site header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerIntro">{{headerIntro}}</textarea>
+        <h2>Edit intro to web site describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeIntro">{{describeIntro}}</textarea><br>
+        <h2>Edit welcome header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerWelcome">{{headerWelcome}}</textarea>
+        <h2>Edit welcome describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeWelcome">{{describeWelcome}}</textarea><br>
+        <h2>Edit additional describe header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerAdditional">{{headerAdditional}}</textarea>
+        <h2>Edit additional describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeAdditional">{{describeAdditional}}</textarea><br>
+        <h2>Edit option1 title:</h2><br>
+        <textarea class="title" maxlength="50" name="titleOption1">{{titleOption1}}</textarea>
+        <h2>Edit option 1 header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerOption1">{{headerOption1}}</textarea>
+        <h2>Edit option 1 describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeOption1">{{describeOption1}}</textarea><br>
+        <h2>Edit option 2 title:</h2><br>
+        <textarea class="title" maxlength="50" name="titleOption2">{{titleOption2}}</textarea>
+        <h2>Edit option 3 header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerOption2">{{headerOption2}}</textarea>
+        <h2>Edit option 2 describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeOption2">{{describeOption2}}</textarea><br>
+        <h2>Edit option 3 title:</h2><br>
+        <textarea class="title" maxlength="50" name="titleOption3">{{titleOption3}}</textarea>
+        <h2>Edit option 3 header:</h2><br>
+        <textarea class="header" maxlength="250" name="headerOption3">{{headerOption3}}</textarea>
+        <h2>Edit option 3 describe:</h2><br>
+        <textarea class="describe" maxlength="1000" name="describeOption3">{{describeOption3}}</textarea><br>
+        <h2>Edit footer title:</h2><br>
+        <textarea class="title" maxlength="50" name="titleFooter">{{titleFooter}}</textarea><br><br>
+        <button type="submit">Confirm edit!</button>
+
+    </form>
+</body>
+</html>

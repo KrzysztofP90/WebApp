@@ -120,7 +120,7 @@ public class DataBaseInitializator {
 //        String password = "";
 //        String login = "";
 //        try {
-//            BufferedReader bf = new BufferedReader(new FileReader(new File("../../resources/access.txt")));
+//            BufferedReader bf = new BufferedReader(new FileReader(new File("src/main/resources/access.txt")));
 //            login = bf.readLine();
 //            password = bf.readLine();
 //        } catch (IOException e) {

@@ -1,0 +1,247 @@
+body {
+
+    background-size: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+    background-attachment: fixed;
+    opacity: 1;
+    z-index: 90;
+}
+
+div#logo{
+    display: flex;
+    justify-content: start;
+    padding-left: 15px;
+    padding-top: 15px;
+    box-sizing: border-box;
+    max-height: 130px;
+
+    border-radius: 10px;
+
+    transition: 3s;
+}
+
+
+img#logo-image {
+
+    border: solid;
+    border: aliceblue;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+
+
+
+div#roll-menu {
+    width: 50%;
+    background-color: black;
+    height: 0px;
+    margin-top: 5%;
+    transition: 3s;
+    opacity: 0.5;
+
+
+}
+
+i#back-to-main {
+    font-size: 100px;
+    color: aliceblue;
+    margin-top: 3%;
+    margin-left: 80%;
+    opacity:0.6;
+    display: none;
+}
+
+i#back-to-main:hover {
+    cursor: pointer;
+    opacity: 1.0;
+
+
+}
+
+p#title {
+    padding-left: 25%;
+    font-size: 40px;
+    color: aliceblue;
+}
+
+div#navbar {
+    display: none;
+    justify-content: space-around;
+    flex-direction: column;
+
+    margin-top: 5%;
+
+    justify-content: space-between;
+
+}
+
+div.option {
+
+    color:aliceblue;
+
+    border-radius: 10px;
+    padding: 1%;
+    border: groove;
+    border-color: lightgrey;
+    border-bottom-color: lightgray;
+    text-align: center;
+
+}
+
+
+
+div.option:hover, div.option a:hover, div.option label:hover {
+    background-color: aliceblue;
+    color: black;
+    opacity:0.6;
+    cursor: pointer;
+}
+
+.option label {
+    opacity: 1;
+}
+
+.fas.fa-bars {
+
+    font-size: 100px;
+    max-width: 100px;
+    min-width: 100px;
+    color: aliceblue;
+    margin-top: 5%;
+    display: flex;
+    margin-left: 45%;
+    border: groove;
+    justify-content: center;
+    opacity: 0.5;
+
+}
+
+.fas.fa-bars:hover{
+
+    cursor: pointer;
+    opacity: 1;
+}
+
+
+
+div#content{
+    min-height: 750px;
+    width: 75%;
+    transition: 3s;
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+div#introduction {
+    color: aliceblue;
+    background-color: black;
+    opacity: 0.4;
+    border: solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+div#about-us-describe, div#roofs-describe, div#hydro-describe, div#contact-describe {
+    height: 0px;
+    width: 0%;
+    display: none;
+    transition: 3s;
+    color: aliceblue;
+    background-color: black;
+    opacity: 0.6;
+    border: solid;
+    border-radius: 10px;
+
+
+    flex-direction: column;
+
+    padding: 20px;
+    margin-left: 20%;
+
+}
+
+div#inputs {
+    display: flex;
+    flex-direction: column;
+
+}
+
+p.txt{
+    /* white-space: pre; */
+    margin-bottom: 10%;
+    font-size: 20px;
+    margin-top: 3%;
+}
+
+#about-us-txt, #roofs-txt, #hydro-txt, #contact-txt {
+    margin-bottom: 10%;
+    font-size: 0px;
+    margin-top: 3%;
+    transition: 3s;
+    opacity:0.9;
+    text-align: center;
+
+}
+
+#message-name, #message-email, #message-area {
+    height: 0px;
+    width: 0px;
+}
+
+#about-us-header, #roofs-header, #hydro-header, #contact-header {
+    text-align: center;
+    opacity:0.9;
+    font-size: 0px;
+}
+
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    color: black;
+}
+
+.foot {
+    color:aliceblue;
+
+    border-radius: 10px;
+    padding: 1%;
+    border: groove;
+    border-color: lightgrey;
+    border-bottom-color: lightgray;
+    text-align: center;
+    width: 95%;
+    margin-left: 1%;
+
+
+}
+/*
+.foot:hover{
+    cursor: pointer;
+    background-color: aliceblue;
+    color: black;
+    OPACITY:0.6;
+}
+*/
+div#me {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+p.me {
+    color: white;
+}
+
+.far.fa-copyright {
+    font-size: 15px;
+    margin-top: 0.5%;
+    color: white;
+}

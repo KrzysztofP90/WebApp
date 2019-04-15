@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Log to CMS</title>
+
+        <link rel="stylesheet" href={{css}} type='text/css'>
+
+        <meta name="author" content="Krzysztof" />
+        <meta name="robots" content="index,follow"/>
+        <meta name="keywords" content="mysite"/>
+        <meta name="description" content="website"/>
+
+        <script src={{scriptURL}} > type="text/javascript"</script>
+    </head>
+    <body background={{backgroundURL}}>
+        <form id="login-div" method="post">
+            <h1>Log to CMS:</h1>
+            <br>
+            <p>Login:</p>
+            <input name="login">
+            <p>Password:</p>
+            <input name="password">
+            <br><br>
+            <div id="buttons">
+                <a><button type="submit">Log in!</button></a>
+            </div>
+        </form>
+        <form method="post" action="/hello">
+            <div id="back">
+                <input type="submit" value="Back to main site">
+            </div>
+        </form>
+    </body>
+</html>
